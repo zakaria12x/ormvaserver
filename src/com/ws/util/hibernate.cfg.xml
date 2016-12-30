@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbimmo</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping resource="com/ws/model/CommissionInventaire.hbm.xml"/>
+        <mapping resource="com/ws/model/Immobilisation.hbm.xml"/>
+        <mapping resource="com/ws/model/SousFamille.hbm.xml"/>
+        <mapping resource="com/ws/model/Service.hbm.xml"/>
+        <mapping resource="com/ws/model/Famille.hbm.xml"/>
+        <mapping resource="com/ws/model/Bureau.hbm.xml"/>
+        <mapping resource="com/ws/model/Affectation.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+

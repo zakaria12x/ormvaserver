@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 mai 2016 10:07:29 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.ws.model.Affectation" table="affectation" catalog="dbimmo" optimistic-lock="version">
+        <composite-id name="id" class="com.ws.model.AffectationId">
+            <key-property name="idImmobilisation" type="int">
+                <column name="Id_immobilisation" />
+            </key-property>
+            <key-property name="idBureauSource" type="int">
+                <column name="Id_bureau_source" />
+            </key-property>
+            <key-property name="idBureauDestination" type="int">
+                <column name="Id_bureau_destination" />
+            </key-property>
+            <key-property name="dateAffectation" type="date">
+                <column name="date_affectation" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bureauByIdBureauDestination" class="com.ws.model.Bureau" update="false" insert="false" fetch="select">
+            <column name="Id_bureau_destination" not-null="true" />
+        </many-to-one>
+        <many-to-one name="bureauByIdBureauSource" class="com.ws.model.Bureau" update="false" insert="false" fetch="select">
+            <column name="Id_bureau_source" not-null="true" />
+        </many-to-one>
+        <many-to-one name="immobilisation" class="com.ws.model.Immobilisation" update="false" insert="false" fetch="select">
+            <column name="Id_immobilisation" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

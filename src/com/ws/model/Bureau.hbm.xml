@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 mai 2016 10:07:29 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.ws.model.Bureau" table="bureau" catalog="dbimmo" optimistic-lock="version">
+        <id name="idBureau" type="java.lang.Integer">
+            <column name="Id_bureau" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="service" class="com.ws.model.Service" fetch="select">
+            <column name="Id_service" not-null="true" />
+        </many-to-one>
+        <set name="affectationsForIdBureauDestination" table="affectation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_bureau_destination" not-null="true" />
+            </key>
+            <one-to-many class="com.ws.model.Affectation" />
+        </set>
+        <set name="affectationsForIdBureauSource" table="affectation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_bureau_source" not-null="true" />
+            </key>
+            <one-to-many class="com.ws.model.Affectation" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 mai 2016 00:42:42 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.ws.model.CommissionInventaire" table="commission_inventaire" catalog="dbimmo" optimistic-lock="version">
+        <id name="idCommInventaire" type="java.lang.Integer">
+            <column name="Id_comm_inventaire" />
+            <generator class="identity" />
+        </id>
+        <property name="chefCommission" type="int">
+            <column name="chef_commission" not-null="true" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

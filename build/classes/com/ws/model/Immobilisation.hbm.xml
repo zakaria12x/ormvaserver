@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 mai 2016 10:07:29 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.ws.model.Immobilisation" table="immobilisation" catalog="dbimmo" optimistic-lock="version">
+        <id name="idImmobilisation" type="java.lang.Integer">
+            <column name="Id_immobilisation" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sousFamille" class="com.ws.model.SousFamille" fetch="select">
+            <column name="id_sous_famille" not-null="true" />
+        </many-to-one>
+        <property name="designation" type="string">
+            <column name="designation" length="500" not-null="true" />
+        </property>
+        <property name="reference" type="string">
+            <column name="reference" length="500" not-null="true" />
+        </property>
+        <property name="dateAcquisition" type="date">
+            <column name="date_acquisition" length="10" not-null="true" />
+        </property>
+        <property name="dateMiseEnService" type="date">
+            <column name="date_mise_en_service" length="10" not-null="true" />
+        </property>
+        <property name="codeABarre" type="string">
+            <column name="code_a_barre" length="500" not-null="true" />
+        </property>
+        <property name="etat" type="string">
+            <column name="etat" length="50" not-null="true" />
+        </property>
+        <property name="commentaire" type="string">
+            <column name="commentaire" length="65535" />
+        </property>
+        <set name="affectations" table="affectation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_immobilisation" not-null="true" />
+            </key>
+            <one-to-many class="com.ws.model.Affectation" />
+        </set>
+    </class>
+</hibernate-mapping>

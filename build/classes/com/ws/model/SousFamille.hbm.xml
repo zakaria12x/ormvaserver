@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 mai 2016 10:07:29 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.ws.model.SousFamille" table="sous_famille" catalog="dbimmo" optimistic-lock="version">
+        <id name="idSousFamille" type="java.lang.Integer">
+            <column name="Id_sous_famille" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="famille" class="com.ws.model.Famille" fetch="select">
+            <column name="Id_famille" not-null="true" />
+        </many-to-one>
+        <set name="immobilisations" table="immobilisation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_sous_famille" not-null="true" />
+            </key>
+            <one-to-many class="com.ws.model.Immobilisation" />
+        </set>
+    </class>
+</hibernate-mapping>
